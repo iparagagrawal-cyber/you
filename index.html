@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anushita's Exclusive Offer 🔥</title>
+    <style>
+        body { background: #1a0000; color: white; font-family: 'Georgia', serif; text-align: center; }
+        .container { margin-top: 10vh; padding: 30px; border: 1px solid #d4af37; display: inline-block; border-radius: 15px; background: rgba(0,0,0,0.8); }
+        .coupon { display: none; border: 2px dashed #ff0055; padding: 20px; margin-top: 20px; background: #2b0000; animation: flash 1s infinite alternate; }
+        @keyframes flash { from { box-shadow: 0 0 5px #ff0055; } to { box-shadow: 0 0 20px #ff0055; } }
+        .btn { background: #d4af37; color: black; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; margin: 10px; }
+        #noBtn { position: absolute; background: #555; color: white; }
+        img { width: 250px; border-radius: 10px; margin-top: 15px; display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="header">Anushita, your 24-hour trial of 'Me' has expired.</h1>
+        <p id="subtext">To renew your subscription, you must agree to the following terms...</p>
+        
+        <img id="myPhoto" src="anushita.jpeg">
+
+        <div id="couponBox" class="coupon">
+            <h3>🎟️ OFFICIAL NAUGHTY COUPON 🎟️</h3>
+            <p>Valid for: **One Endless Hug & A Very Long Kiss**</p>
+            <p style="font-size: 0.8rem;">*Terms: Cannot be returned. No refunds on my love.*</p>
+        </div>
+
+        <div id="controls">
+            <button class="btn" onclick="firstStep()">VIEW TERMS</button>
+        </div>
+    </div>
+
+    <script>
+        let step = 0;
+        function firstStep() {
+            const h = document.getElementById('header');
+            const s = document.getElementById('subtext');
+            const btn = document.querySelector('.btn');
+
+            if (step === 0) {
+                h.innerText = "Term #1: You must admit I'm your favorite distraction.";
+                btn.innerText = "I ADMIT IT";
+                step++;
+            } else if (step === 1) {
+                h.innerText = "Term #2: You have to be my Valentine (No choice, sorry).";
+                btn.innerText = "OKAY, FINE";
+                step++;
+            } else {
+                showFinal();
+            }
+        }
+
+        function showFinal() {
+            document.getElementById('header').innerText = "Subscription Renewed! ❤️";
+            document.getElementById('subtext').innerText = "Here is your first reward, Gorgeous...";
+            document.getElementById('couponBox').style.display = "block";
+            document.getElementById('myPhoto').style.display = "block";
+            document.getElementById('controls').innerHTML = `
+                <p style="color: #d4af37;">See you tonight? 🔥</p>
+                <button class="btn" id="noBtn" onmouseover="moveNo()">NO</button>
+            `;
+        }
+
+        function moveNo() {
+            const b = document.getElementById('noBtn');
+            b.style.left = Math.random() * (window.innerWidth - 100) + "px";
+            b.style.top = Math.random() * (window.innerHeight - 50) + "px";
+            b.innerText = "TRY HARDER";
+        }
+    </script>
+</body>
+</html>
